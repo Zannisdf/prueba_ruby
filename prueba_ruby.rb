@@ -24,12 +24,19 @@ def get_average(student)
 end
 
 def show_average(students)
-  students.each { |student| puts "Nombre: #{student[0]}. Promedio: #{get_average(student)}" }
+  students.each do |student|
+    puts "Nombre: #{student[0]}. Promedio: #{get_average(student)}"
+  end
+end
+
+def show_absences(students)
+  students.each do |student|
+    number_of_absences = student[1..-1].count('A')
+    puts "Nombre: #{student[0]}. Ausencias: #{number_of_absences}"
+  end
 end
 
 students = read_alum('notas.csv')
-
-
 
 ask = true
 while ask
@@ -37,7 +44,7 @@ while ask
   if action == 1
     show_average(students)
   elsif action == 2
-    puts 2
+    show_absences(students)
   elsif action == 3
     puts 3
   elsif action == 4
