@@ -36,9 +36,15 @@ def show_absences(students)
   end
 end
 
-students = read_alum('notas.csv')
+def show_passed(students, mark = 5.0)
+  students.each do |student|
+    puts student[0] if get_average(student) >= mark
+  end
+end
 
+students = read_alum('notas.csv')
 ask = true
+
 while ask
   action = print_menu
   if action == 1
@@ -46,11 +52,13 @@ while ask
   elsif action == 2
     show_absences(students)
   elsif action == 3
-    puts 3
+    puts 'Ingrese la nota necesaria para aprobar:'
+    mark = gets.chomp
+    mark == '' ? show_passed(students) : show_passed(students,mark.to_f)
   elsif action == 4
     puts 'Adiós!'
     ask = false
   else
-    puts 'Opción inválida'
+    puts 'Opción inválida.'
   end
 end
