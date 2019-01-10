@@ -20,19 +20,19 @@ end
 
 def get_average(student)
   grades = get_grades(student)
-  grades.sum / (grades.length - 1)
+  grades.sum / (grades.length - 1) #student array length without its first position.
 end
 
 def show_average(students)
   students.each do |student|
-    puts "Nombre: #{student[0]}. Promedio: #{get_average(student)}"
+    puts "Nombre: #{student.first}. Promedio: #{get_average(student)}"
   end
 end
 
 def show_absences(students)
   students.each do |student|
     number_of_absences = student[1..-1].count('A')
-    puts "Nombre: #{student[0]}. Ausencias: #{number_of_absences}"
+    puts "Nombre: #{student.first}. Ausencias: #{number_of_absences}"
   end
 end
 
@@ -61,4 +61,5 @@ while ask
   else
     puts 'Opción inválida.'
   end
+  puts '=================================' unless action < 1 || action > 4
 end
