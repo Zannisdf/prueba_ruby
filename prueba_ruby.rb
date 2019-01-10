@@ -36,7 +36,7 @@ def show_absences(students)
   end
 end
 
-def show_passed(students, mark = 5.0)
+def show_approved(students, mark = 5.0)
   students.each do |student|
     puts student[0] if get_average(student) >= mark
   end
@@ -54,7 +54,7 @@ while ask
   elsif action == 3
     puts 'Ingrese la nota necesaria para aprobar:'
     mark = gets.chomp
-    mark == '' ? show_passed(students) : show_passed(students,mark.to_f)
+    mark == '' ? show_approved(students) : show_approved(students,mark.to_f)
   elsif action == 4
     puts 'Adiós!'
     ask = false
