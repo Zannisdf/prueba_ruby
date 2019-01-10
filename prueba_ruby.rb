@@ -14,13 +14,28 @@ def print_menu
   gets.to_i
 end
 
+def get_grades(student)
+  student.map(&:to_f)
+end
+
+def get_average(student)
+  grades = get_grades(student)
+  grades.sum / (grades.length - 1)
+end
+
+def show_average(students)
+  students.each { |student| puts "Nombre: #{student[0]}. Promedio: #{get_average(student)}" }
+end
+
 students = read_alum('notas.csv')
+
+
 
 ask = true
 while ask
   action = print_menu
   if action == 1
-    puts 1
+    show_average(students)
   elsif action == 2
     puts 2
   elsif action == 3
